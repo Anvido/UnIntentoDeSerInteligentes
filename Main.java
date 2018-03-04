@@ -8,8 +8,7 @@ distintos tipos de busquedas sobre el para llegar a la solucion.
 * DFS
 * DFS iterado
 * Costo Uniforme
-* A*
-* 2 Heuristicas (Chino rabon y Manhattan)
+* A* 2 Heuristicas (Chino rabon y Manhattan)
 
 30 experimentos que incluyen tiempos de busquedas, tiempo promedio,
 desviacion estandar, numero de nodos expandidos, maximo numero de nodos en

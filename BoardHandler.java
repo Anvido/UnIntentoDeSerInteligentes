@@ -11,24 +11,24 @@ public class BoardHandler {
     return boardAfter.toString();
   }
 
-  public static String upSwap(String board, int posVechio){
-    if(posVechio < 4) return null;
-    return swap(board, posVechio, posVechio - 4);
+  public static String upSwap(String board, int blankPos){
+    if(blankPos < 4) return null;
+    return swap(board, blankPos, blankPos - 4);
   }
 
-  public static String downSwap(String board, int posVechio){
-    if(posVechio > 11) return null;
-    return swap(board, posVechio, posVechio + 4);
+  public static String downSwap(String board, int blankPos){
+    if(blankPos > 11) return null;
+    return swap(board, blankPos, blankPos + 4);
   }
 
-  public static String leftSwap(String board, int posVechio){
-    if(posVechio % 4 == 0) return null;
-    return swap(board, posVechio, posVechio - 1);
+  public static String leftSwap(String board, int blankPos){
+    if(blankPos % 4 == 0) return null;
+    return swap(board, blankPos, blankPos - 1);
   }
 
-  public static String rightSwap(String board, int posVechio){
-    if((posVechio + 1) % 4 == 0) return null;
-    return swap(board, posVechio, posVechio + 1);
+  public static String rightSwap(String board, int blankPos){
+    if((blankPos + 1) % 4 == 0) return null;
+    return swap(board, blankPos, blankPos + 1);
   }
 
   public static String shuffle(String board){
