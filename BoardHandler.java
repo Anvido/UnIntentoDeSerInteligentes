@@ -31,15 +31,37 @@ public class BoardHandler<T> {
     return swap(board, blankPos, blankPos + 1);
   }
 
-  public static String shuffle(String board){
+  public static String shuffle(String board, int moves){
     Random randomX = new Random();
-    String boardAfter = board;
-    int a = 0, b = 0;
-    for(int i = 0; i < 15; i++){
-      a = randomX.nextInt(16);
-      b = randomX.nextInt(16);
-      boardAfter = swap(boardAfter, a, b);
-      System.out.println(boardAfter);
+    String boardAfter = board, auxBoard = null;
+    int leftMoves = moves;
+    int blankPos = 0;
+    while(leftMoves-- != 0){
+
+      blankPos = boardAfter.indexOf('#');
+      switch(randomX.nextInt(4)){
+
+        case 0:
+          auxBoard = upSwap(boardAfter, blankPos);
+          break;
+
+        case 1:
+          auxBoard = downSwap(boardAfter, blankPos);
+          break;
+
+        case 2:
+          auxBoard = leftSwap(boardAfter, blankPos);
+          break;
+
+        case 3:
+          auxBoard = rightSwap(boardAfter, blankPos);
+          break;
+      }
+      if(auxBoard == null){
+        leftMoves++;
+      }else{
+        boardAfter = auxBoard;
+      }
     }
 
     return boardAfter;
