@@ -1,31 +1,33 @@
 import java.util.*;
 
-public class Graph<T> {
+public class Graph {
 
-  protected class GraphNode<T> {
-    public T state;
-    public T parent;
-    public T[] childs;
+  protected class GraphNode {
+    public String state;
+    public String parent;
+    public String[] childs;
 
-    public GraphNode(T state, T parent){
+    public GraphNode(String state, String parent){
       int blankPos = state.indexOf('#');
       this.state = state;
       this.parent = parent;
-      this.GraphNode[] = new T[]{
+      this.childs = new String[]{
         BoardHandler.upSwap(this.state, blankPos),
         BoardHandler.downSwap(this.state, blankPos),
         BoardHandler.leftSwap(this.state, blankPos),
         BoardHandler.rightSwap(this.state, blankPos)
-      }
+      };
     }
   }
 
-  protected HashMap<T, GraphNode> nodes;
+  protected HashMap<String, GraphNode> nodes;
 
-  public void generateNode(T state, T parent){
+  public boolean wasVisited(String state, String parent){
     if(!this.nodes.containsKey(state)){
       this.nodes.put(state, new GraphNode(state, parent));
+      return false;
     }
+    return true;
   }
 
   public int generatedNodes(){

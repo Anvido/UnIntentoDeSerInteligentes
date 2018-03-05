@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class BoardHandler {
+public class BoardHandler<T> {
 
   private static String swap(String board, int tile1, int tile2){
     char a = board.charAt(tile1), b = board.charAt(tile2);
