@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class BoardHandler<T> {
 
@@ -32,7 +31,7 @@ public class BoardHandler<T> {
   }
 
   public static String shuffle(String board, int moves){
-    Random randomX = new Random();
+    Random randomX = new Random(System.currentTimeMillis());
     String boardAfter = board, auxBoard = null;
     int leftMoves = moves;
     int blankPos = 0;
@@ -63,7 +62,14 @@ public class BoardHandler<T> {
         boardAfter = auxBoard;
       }
     }
-
     return boardAfter;
   }
+
+  public static void printBoard(String board){
+    StringBuilder sb = new StringBuilder(board);
+    for(int i=16; i>0; i-=4)
+      sb.insert(i, '\n');
+    System.out.println(sb.toString());
+  }
+
 }

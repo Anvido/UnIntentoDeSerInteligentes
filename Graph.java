@@ -3,9 +3,11 @@ import java.util.*;
 public class Graph {
 
   protected HashMap<String, GraphNode> nodes;
+  protected int depth;
 
   public Graph(){
     this.nodes = new HashMap();
+    this.depth = 0;
   }
 
   public boolean wasVisited(String state, String parent){
@@ -22,6 +24,7 @@ public class Graph {
 
   public void getPath(GraphNode node){
     if(node.parent != null){
+      this.depth++;
       getPath(this.nodes.get(node.parent));
     }
     System.out.println(node);

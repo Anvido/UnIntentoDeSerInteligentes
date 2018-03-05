@@ -1,23 +1,18 @@
 public abstract class SearchList<T> {
 
-    //Node subclass exclusive for SearchList
     protected class Node<T>{
 
-        //Properties
         protected T data;
         protected Node<T> next;
 
-        //Methods
         public Node(T data, Node<T> next) {
             this.data = data;
             this.next = next;
         }
     }
 
-    //Properties
     protected Node<T> head = null, tail = null;
 
-    //Methods
     public SearchList(){
         this.head = new Node(null, null);
     }

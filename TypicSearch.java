@@ -1,6 +1,3 @@
-import java.util.*;
-import java.io.*;
-
 public class TypicSearch {
 
   protected SearchList<GraphNode> list;
@@ -21,12 +18,12 @@ public class TypicSearch {
       for (int i = 0; i < 4 ; i++){
         if(aux.childs[i] != null && !graph.wasVisited(aux.childs[i], aux.state)){
           this.list.add(graph.nodes.get(aux.childs[i]));
-          // System.out.println(aux.childs[i]);
         }
       }
-      // System.out.println(graph.generatedNodes());
     }
-    System.out.println("Solucion: \n");
+
+    System.out.println("Solution: \n");
     graph.getPath(aux);
+    System.out.println("Moves: " + graph.depth + "\n\n");
   }
 }
