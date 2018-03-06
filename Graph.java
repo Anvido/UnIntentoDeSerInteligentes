@@ -10,7 +10,7 @@ public class Graph {
     this.depth = 0;
   }
 
-  public boolean wasVisited(String state, String parent){
+  public boolean wasCreated(String state, String parent){
     if(!this.nodes.containsKey(state)){
       this.nodes.put(state, new GraphNode(state, parent));
       return false;

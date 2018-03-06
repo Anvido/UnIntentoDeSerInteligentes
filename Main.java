@@ -30,7 +30,7 @@ class Main {
     System.out.println("Inicio:\n\n");
     BoardHandler.printBoard(board);
 
-    TypicSearch BFS = new TypicSearch(new MyQueue());
+    TypicSearch BFS = new TypicSearch(new MyStack());
     BFS.search(board, dest);
   }
 }
