@@ -2,9 +2,9 @@ import java.util.*;
 
 public class ASearch{
 
-  protected PriorityQueue<BigNode> heap;
+  protected PriorityQueue<GraphNode> heap;
   protected Heuristic function;
-  protected Graph<BigNode> graph;
+  protected Graph graph;
 
   public ASearch(Heuristic function){
     this.heap = new PriorityQueue();
@@ -13,10 +13,12 @@ public class ASearch{
   }
 
   public void search(String init, String dest){
-    int heuristic = this.function.calculate(init);
-    BigNode aux;
-    this.graph.wasCreated(init, null, 0, heuristic);
-    this.heap.offer(this.graph.nodes.get(init));
+    int[] args = new int[2]; // 0 -> depth, 1 -> heuristic
+    args[0] = 0;
+    args[1] = this.function.calculate(init);
+    GraphNode aux = new GraphNode(init, null, args[0], args[1]);
+    this.graph.nodes.put(init, aux);
+    this.heap.offer(aux);
 
     while(!this.heap.isEmpty()){
       aux = this.heap.poll();
@@ -28,8 +30,10 @@ public class ASearch{
 
       for (int i = 0; i < 4; i++){
         if(aux.childs[i] != null){
-          heuristic = this.function.calculate(aux.childs[i]);
-          if(!this.graph.wasCreated(aux.childs[i], aux.state, aux.depth + 1, heuristic)){
+          args[0] = aux.depth + 1;
+          args[1] = this.function.calculate(aux.childs[i]);
+
+          if(!this.graph.wasCreated(aux.childs[i], aux.state, args)){
             this.heap.offer(this.graph.nodes.get(aux.state));
           }
         }

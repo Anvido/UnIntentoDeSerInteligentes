@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class Graph<T extends GraphNode> {
+public class Graph {
 
-  protected HashMap<String, ? extends GraphNode> nodes;
+  protected HashMap<String, GraphNode> nodes;
   protected int depth;
 
   public Graph(){
@@ -10,17 +10,11 @@ public class Graph<T extends GraphNode> {
     this.depth = 0;
   }
 
-  public boolean wasCreated(String state, String parent, int depth, int heuristic){
+  public boolean wasCreated(String state, String parent, int[] args){
     if(!this.nodes.containsKey(state)){
-      this.nodes.put(state, new BigNode(state, parent, depth, heuristic));
-      return false;
-    }
-    return true;
-  }
-
-  public boolean wasCreated(String state, String parent){
-    if(!this.nodes.containsKey(state)){
-      this.nodes.put(state, new GraphNode(state, parent));
+      this.nodes.put(state,
+      (args == null) ? new GraphNode(state, parent) :
+      new GraphNode(state, parent, args[0], args[1]));
       return false;
     }
     return true;
@@ -30,7 +24,7 @@ public class Graph<T extends GraphNode> {
     return this.nodes.size();
   }
 
-  public void getPath(T node){
+  public void getPath(GraphNode node){
     if(node.parent != null){
       this.depth++;
       getPath(this.nodes.get(node.parent));

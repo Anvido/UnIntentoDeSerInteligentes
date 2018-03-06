@@ -16,7 +16,7 @@ public class TypicSearch {
     while((aux = list.remove()) != null && !aux.state.equalsIgnoreCase(dest)){
 
       for (int i = 0; i < 4 ; i++){
-        if(aux.childs[i] != null && !graph.wasCreated(aux.childs[i], aux.state)){
+        if(aux.childs[i] != null && !graph.wasCreated(aux.childs[i], aux.state, null)){
           this.list.add(graph.nodes.get(aux.childs[i]));
         }
       }

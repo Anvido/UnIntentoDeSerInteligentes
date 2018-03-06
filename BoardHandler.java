@@ -65,11 +65,12 @@ public class BoardHandler<T> {
     return boardAfter;
   }
 
-  public static void printBoard(String board){
+  public static String printBoard(String board){
     StringBuilder sb = new StringBuilder(board);
     for(int i=16; i>0; i-=4)
       sb.insert(i, '\n');
     System.out.println(sb.toString());
+    return sb.toString();
   }
 
 }
