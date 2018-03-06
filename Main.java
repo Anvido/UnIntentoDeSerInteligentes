@@ -27,14 +27,14 @@ public class Main {
     final String dest = "123456789ABCDEF#";
     // final String dest = "214365F9A6CB#D7E";
     //BoardHandler.printBoard(dest);
-    String board = BoardHandler.shuffle(dest, 1);
-    BoardHandler.printBoard(board);
+    String board = BoardHandler.shuffle(dest, 15);
+    System.out.println(BoardHandler.printBoard(board));
     // AngryKidHeuristic akh = new AngryKidHeuristic();
     // Heuristic akh = new ManhattanHeuristic();
     // System.out.println(akh.calculate(dest));
 
     // String board;
-    // TypicSearch BFS;
+    TypicSearch BFS;
     // IDFS idfs;
     // for(int i=0; i<30; i++){
     //   board = BoardHandler.shuffle(dest, 15);
@@ -42,15 +42,15 @@ public class Main {
     //   // System.out.println("Inicio:\n\n");
     //   System.out.println("------");
     //   // BoardHandler.printBoard(board);
-    //   BFS = new TypicSearch(new MyQueue());
-    //   BFS.search(board, dest);
+      BFS = new TypicSearch(new MyQueue());
+      BFS.search(board, dest);
     //
     //   idfs = new IDFS();
     //   idfs.search(board, dest);
     //   System.out.println("------");
     // }
 
-    ASearch a = new ASearch(new AngryKidHeuristic());
+    UC_ASearch a = new UC_ASearch();
     a.search(board, dest);
   }
 }

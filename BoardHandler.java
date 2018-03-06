@@ -69,7 +69,6 @@ public class BoardHandler<T> {
     StringBuilder sb = new StringBuilder(board);
     for(int i=16; i>0; i-=4)
       sb.insert(i, '\n');
-    System.out.println(sb.toString());
     return sb.toString();
   }
 

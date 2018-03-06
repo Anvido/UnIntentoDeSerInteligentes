@@ -4,6 +4,7 @@ public class GraphNode implements Comparable<GraphNode>{
   public int depth;
   public int totalCost;
   public String[] childs;
+  public boolean wasVisited;
 
   public GraphNode(String state, String parent){
     this.depth = 0;
@@ -21,6 +22,7 @@ public class GraphNode implements Comparable<GraphNode>{
     int blankPos = state.indexOf('#');
     this.state = state;
     this.parent = parent;
+    this.wasVisited = false;
     this.childs = new String[]{
       BoardHandler.rightSwap(this.state, blankPos),
       BoardHandler.upSwap(this.state, blankPos),
