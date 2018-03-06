@@ -3,7 +3,7 @@ import java.util.*;
 public class IDFS {
 
   public final int INITIAL_DEPTH = 2;
-  protected Graph graph;
+  protected Graph<GraphNode> graph;
 
   public IDFS(){
     this.graph = new Graph();

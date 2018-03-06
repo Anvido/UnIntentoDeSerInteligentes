@@ -28,8 +28,8 @@ public class Main {
     // final String dest = "214365F9A6CB#D7E";
     BoardHandler.printBoard(dest);
     // AngryKidHeuristic akh = new AngryKidHeuristic();
-    Heuristic akh = new ManhattanHeuristic();
-    System.out.println(akh.calculate(dest));
+    // Heuristic akh = new ManhattanHeuristic();
+    // System.out.println(akh.calculate(dest));
 
     // String board;
     // TypicSearch BFS;
