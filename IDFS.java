@@ -1,10 +1,12 @@
+import java.util.*;
+
 public class IDFS {
 
   public final int INITIAL_DEPTH = 2;
   protected Graph graph;
 
   public IDFS(){
-    this.graph = new HashMap();
+    this.graph = new Graph();
   }
 
   public void search(String init, String dest){
@@ -16,6 +18,7 @@ public class IDFS {
       aux = dfsRecursive(graph.nodes.get(init), dest, 0, i);
       if(aux != null && aux.state.equalsIgnoreCase(dest)){
         graph.getPath(aux);
+        System.out.println("Moves with IDFS: " + graph.depth);
         return ;
       }
     }

@@ -22,8 +22,8 @@ public class TypicSearch {
       }
     }
 
-    System.out.println("Solution: \n");
+    // System.out.println("Solution: \n");
     graph.getPath(aux);
-    System.out.println("Moves: " + graph.depth + "\n\n");
+    System.out.println("Moves with BFS: " + graph.depth);
   }
 }

@@ -27,6 +27,6 @@ public class Graph {
       this.depth++;
       getPath(this.nodes.get(node.parent));
     }
-    System.out.println(node);
+    // System.out.println(node);
   }
 }

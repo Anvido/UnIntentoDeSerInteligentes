@@ -21,16 +21,31 @@ D E F C
 */
 // "123456789AFBDE#C"
 
-class Main {
+public class Main {
   public static void main(String[] Args){
 
     final String dest = "123456789ABCDEF#";
-    String board = BoardHandler.shuffle(dest, 15);
+    // final String dest = "214365F9A6CB#D7E";
+    BoardHandler.printBoard(dest);
+    // AngryKidHeuristic akh = new AngryKidHeuristic();
+    Heuristic akh = new ManhattanHeuristic();
+    System.out.println(akh.calculate(dest));
 
-    System.out.println("Inicio:\n\n");
-    BoardHandler.printBoard(board);
-
-    TypicSearch BFS = new TypicSearch(new MyStack());
-    BFS.search(board, dest);
+    // String board;
+    // TypicSearch BFS;
+    // IDFS idfs;
+    // for(int i=0; i<30; i++){
+    //   board = BoardHandler.shuffle(dest, 15);
+    //
+    //   // System.out.println("Inicio:\n\n");
+    //   System.out.println("------");
+    //   // BoardHandler.printBoard(board);
+    //   BFS = new TypicSearch(new MyQueue());
+    //   BFS.search(board, dest);
+    //
+    //   idfs = new IDFS();
+    //   idfs.search(board, dest);
+    //   System.out.println("------");
+    // }
   }
 }
