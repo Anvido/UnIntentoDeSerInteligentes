@@ -33,33 +33,35 @@ public class BoardHandler<T> {
   public static String shuffle(String board, int moves){
     Random randomX = new Random(System.currentTimeMillis());
     String boardAfter = board, auxBoard = null;
-    int leftMoves = moves;
+    int leftMoves = moves, lastMove = 0, currentMove = 0;
     int blankPos = 0;
     while(leftMoves-- != 0){
+      if((currentMove = randomX.nextInt(4)) != lastMove){
+        blankPos = boardAfter.indexOf('#');
+        switch(currentMove){
 
-      blankPos = boardAfter.indexOf('#');
-      switch(randomX.nextInt(4)){
+          case 0:
+            auxBoard = upSwap(boardAfter, blankPos);
+            break;
 
-        case 0:
-          auxBoard = upSwap(boardAfter, blankPos);
-          break;
+          case 1:
+            auxBoard = downSwap(boardAfter, blankPos);
+            break;
 
-        case 1:
-          auxBoard = downSwap(boardAfter, blankPos);
-          break;
+          case 2:
+            auxBoard = leftSwap(boardAfter, blankPos);
+            break;
 
-        case 2:
-          auxBoard = leftSwap(boardAfter, blankPos);
-          break;
-
-        case 3:
-          auxBoard = rightSwap(boardAfter, blankPos);
-          break;
-      }
-      if(auxBoard == null){
-        leftMoves++;
-      }else{
-        boardAfter = auxBoard;
+          case 3:
+            auxBoard = rightSwap(boardAfter, blankPos);
+            break;
+        }
+        if(auxBoard == null){
+          leftMoves++;
+        }else{
+          boardAfter = auxBoard;
+        }
+        lastMove = currentMove;
       }
     }
     return boardAfter;

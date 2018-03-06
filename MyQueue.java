@@ -10,5 +10,8 @@ public class MyQueue<T> extends SearchList<T> {
         Node<T> aux = new Node(x, null);
         this.tail.next = aux;
         this.tail = aux;
+        this.expanddedNodes++;
+        this.size++;
+        this.maxSize += this.size > this.maxSize? 1 : 0;
     }
 }

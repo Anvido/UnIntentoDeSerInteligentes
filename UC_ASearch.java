@@ -5,20 +5,26 @@ public class UC_ASearch {
   protected PriorityQueue<GraphNode> heap;
   protected Heuristic function;
   protected Graph graph;
+  public int expanddedNodes;
+  public int maxSize;
 
   public UC_ASearch(Heuristic function){
     this.heap = new PriorityQueue();
     this.function = function;
     this.graph = new Graph();
+    this.expanddedNodes = 1;
+    this.maxSize = 1;
   }
 
   public UC_ASearch(){
     this.heap = new PriorityQueue();
     this.function = null;
     this.graph = new Graph();
+    this.expanddedNodes = 1;
+    this.maxSize = 1;
   }
 
-  public void search(String init, String dest){
+  public int search(String init, String dest){
     int[] args = new int[2]; // 0 -> depth, 1 -> heuristic
     args[0] = 0;
     args[1] = (this.function == null) ? 0 : this.function.calculate(init);
@@ -34,8 +40,8 @@ public class UC_ASearch {
         aux.wasVisited = true;
         if(aux.state.equalsIgnoreCase(dest)){
           this.graph.getPath(aux);
-          System.out.println("Moves: " + this.graph.depth);
-          break;
+          // System.out.println("Moves: " + this.graph.depth);
+          return this.graph.depth;
         }
 
         for (int i = 0; i < 4; i++){
@@ -45,10 +51,13 @@ public class UC_ASearch {
             this.graph.wasCreated(aux.childs[i], aux.state, args);
             if(!this.graph.nodes.get(aux.childs[i]).wasVisited){
               this.heap.offer(this.graph.nodes.get(aux.childs[i]));
+              this.expanddedNodes++;
+              this.maxSize += this.heap.size() > this.maxSize? 1: 0;
             }
           }
         }
       }
     }
+    return -1;
   }
 }

@@ -6,7 +6,7 @@ public class TypicSearch {
     this.list = list;
   }
 
-  public void search(String init, String dest){
+  public int search(String init, String dest){
     Graph graph = new Graph();
     GraphNode aux = new GraphNode(init, null);
     this.list.add(aux);
@@ -24,6 +24,7 @@ public class TypicSearch {
 
     // System.out.println("Solution: \n");
     graph.getPath(aux);
-    System.out.println("Moves with BFS: " + graph.depth);
+    return graph.depth;
+    // System.out.println("Moves with BFS: " + graph.depth);
   }
 }

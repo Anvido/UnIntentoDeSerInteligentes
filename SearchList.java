@@ -1,4 +1,7 @@
 public abstract class SearchList<T> {
+    public int expanddedNodes;
+    public int size;
+    public int maxSize;
 
     protected class Node<T>{
 
@@ -15,6 +18,9 @@ public abstract class SearchList<T> {
 
     public SearchList(){
         this.head = new Node(null, null);
+        this.expanddedNodes = 0;
+        this.size = 0;
+        this.maxSize = 0;
     }
 
     public abstract void add(T x);
@@ -27,6 +33,7 @@ public abstract class SearchList<T> {
         }
         T aux = this.head.next.data;
         this.head = this.head.next;
+        this.size--;
         return aux;
     }
 }
