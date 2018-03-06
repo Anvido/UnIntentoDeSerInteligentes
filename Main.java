@@ -26,7 +26,9 @@ public class Main {
 
     final String dest = "123456789ABCDEF#";
     // final String dest = "214365F9A6CB#D7E";
-    BoardHandler.printBoard(dest);
+    //BoardHandler.printBoard(dest);
+    String board = BoardHandler.shuffle(dest, 1);
+    BoardHandler.printBoard(board);
     // AngryKidHeuristic akh = new AngryKidHeuristic();
     // Heuristic akh = new ManhattanHeuristic();
     // System.out.println(akh.calculate(dest));
@@ -47,5 +49,8 @@ public class Main {
     //   idfs.search(board, dest);
     //   System.out.println("------");
     // }
+
+    ASearch a = new ASearch(new AngryKidHeuristic());
+    a.search(board, dest);
   }
 }

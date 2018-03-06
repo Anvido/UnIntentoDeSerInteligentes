@@ -6,24 +6,21 @@ public class GraphNode implements Comparable<GraphNode>{
   public String[] childs;
 
   public GraphNode(String state, String parent){
-    int blankPos = state.indexOf('#');
-    this.state = state;
-    this.parent = parent;
     this.depth = 0;
     this.totalCost = 0;
-    this.childsInit(blankPos);
+    this.leftInit(state, parent);
   }
 
   public GraphNode(String state, String parent, int depth, int heuristic){
+    this.depth = depth;
+    this.totalCost = depth + heuristic;
+    this.leftInit(state, parent);
+  }
+
+  private void leftInit(String state, String parent){
     int blankPos = state.indexOf('#');
     this.state = state;
     this.parent = parent;
-    this.depth = depth;
-    this.totalCost = depth + heuristic;
-    this.childsInit(blankPos);
-  }
-
-  private void childsInit(int blankPos){
     this.childs = new String[]{
       BoardHandler.rightSwap(this.state, blankPos),
       BoardHandler.upSwap(this.state, blankPos),
