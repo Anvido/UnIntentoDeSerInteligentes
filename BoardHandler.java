@@ -35,33 +35,39 @@ public class BoardHandler<T> {
     String boardAfter = board, auxBoard = null;
     int leftMoves = moves, lastMove = 0, currentMove = 0;
     int blankPos = 0;
-    while(leftMoves-- != 0){
-      if((currentMove = randomX.nextInt(4)) != lastMove){
+    while(leftMoves != 0){
         blankPos = boardAfter.indexOf('#');
-        switch(currentMove){
+        switch((currentMove = randomX.nextInt(4)){
 
           case 0:
-            auxBoard = upSwap(boardAfter, blankPos);
+            if(lastMove != 1){
+              auxBoard = upSwap(boardAfter, blankPos);
+            }
             break;
 
           case 1:
-            auxBoard = downSwap(boardAfter, blankPos);
+            if(lastMove != 0){
+              auxBoard = downSwap(boardAfter, blankPos);
+            }
             break;
 
           case 2:
-            auxBoard = leftSwap(boardAfter, blankPos);
+            if(lastMove != 3){
+              auxBoard = leftSwap(boardAfter, blankPos);
+            }
             break;
 
           case 3:
-            auxBoard = rightSwap(boardAfter, blankPos);
+            if(lastMove != 2){
+              auxBoard = rightSwap(boardAfter, blankPos);
+            }
             break;
         }
-        if(auxBoard == null){
-          leftMoves++;
-        }else{
+        if(auxBoard != boardAfter && auxBoard != null){
           boardAfter = auxBoard;
+          leftMoves--;
+          lastMove = currentMove;
         }
-        lastMove = currentMove;
       }
     }
     return boardAfter;

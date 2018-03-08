@@ -27,23 +27,23 @@ public class Main {
     final String dest = "123456789ABCDEF#";
     String board = BoardHandler.shuffle(dest, 15);
     // System.out.println(BoardHandler.printBoard(board));
-    AngryKidHeuristic AKH = new AngryKidHeuristic();
-    ManhattanHeuristic MH = new ManhattanHeuristic();
+    // AngryKidHeuristic AKH = new AngryKidHeuristic();
+    // ManhattanHeuristic MH = new ManhattanHeuristic();
 
-    TypicSearch BFS;
-    TypicSearch DFS;
+    // TypicSearch BFS;
+    // TypicSearch DFS;
     IDFS IDFS;
-    UC_ASearch UC;
-    UC_ASearch AK;
-    UC_ASearch M;
+    // UC_ASearch UC;
+    // UC_ASearch AK;
+    // UC_ASearch M;
 
     // int[][][] stats = new int[5][2][30];
-    for(int i=0; i<30; i++){
-      System.out.println("Prueba #"+(i+1)+":");
-      board = BoardHandler.shuffle(dest, 15);
-
-      BFS = new TypicSearch(new MyQueue());
-      System.out.println("Moves BFS:\t"+BFS.search(board, dest));
+    // for(int i=0; i<30; i++){
+    //   System.out.println("Prueba #"+(i+1)+":");
+    //   board = BoardHandler.shuffle(dest, 15);
+    //
+    //   BFS = new TypicSearch(new MyQueue());
+    //   System.out.println("Moves BFS:\t"+BFS.search(board, dest));
       // stats[0][0][i] = BFS.expanddedNodes;
       // stats[0][1][i] = BFS.maxSize;
 
@@ -52,26 +52,26 @@ public class Main {
       // stats[1][0][i] = DFS.expanddedNodes;
       // stats[1][1][i] = DFS.maxSize;
 
-      IDFS = new IDFS();
-      System.out.println("Moves IDFS:\t"+IDFS.search(board, dest));
+    IDFS = new IDFS();
+    System.out.println("Moves IDFS:\t"+IDFS.search(board, dest));
       // stats[1][0][i] = IDFS.expanddedNodes;
       // stats[1][1][i] = IDFS.maxSize;
 
-      UC = new UC_ASearch();
-      System.out.println("Moves UC:\t"+UC.search(board, dest));
+      // UC = new UC_ASearch();
+      // System.out.println("Moves UC:\t"+UC.search(board, dest));
       // stats[2][0][i] = UC.expanddedNodes;
       // stats[2][1][i] = UC.maxSize;
 
-      AK = new UC_ASearch(AKH);
-      System.out.println("Moves AK:\t"+AK.search(board, dest));
+      // AK = new UC_ASearch(AKH);
+      // System.out.println("Moves AK:\t"+AK.search(board, dest));
       // stats[3][0][i] = AK.expanddedNodes;
       // stats[3][1][i] = AK.maxSize;
 
-      M = new UC_ASearch(MH);
-      System.out.println("Moves M:\t"+M.search(board, dest)+"\n");
+      // M = new UC_ASearch(MH);
+      // System.out.println("Moves M:\t"+M.search(board, dest)+"\n");
       // stats[4][0][i] = M.expanddedNodes;
       // stats[4][1][i] = M.maxSize;
-    }
+    // }
 
     // double[][] results = new double[5][4];
     // for(int i=0; i<5; i++){
