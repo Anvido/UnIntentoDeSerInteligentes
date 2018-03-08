@@ -34,40 +34,40 @@ public class BoardHandler<T> {
     Random randomX = new Random(System.currentTimeMillis());
     String boardAfter = board, auxBoard = null;
     int leftMoves = moves, lastMove = 0, currentMove = 0;
-    int blankPos = 0;
+    int blankPos = boardAfter.indexOf('#');
     while(leftMoves != 0){
+
+      switch(currentMove = randomX.nextInt(4)){
+
+        case 0:
+          if(lastMove != 1){
+            auxBoard = upSwap(boardAfter, blankPos);
+          }
+          break;
+
+        case 1:
+          if(lastMove != 0){
+            auxBoard = downSwap(boardAfter, blankPos);
+          }
+          break;
+
+        case 2:
+          if(lastMove != 3){
+            auxBoard = leftSwap(boardAfter, blankPos);
+          }
+          break;
+
+        case 3:
+          if(lastMove != 2){
+            auxBoard = rightSwap(boardAfter, blankPos);
+          }
+          break;
+      }
+      if(auxBoard != boardAfter && auxBoard != null){
+        boardAfter = auxBoard;
+        leftMoves--;
+        lastMove = currentMove;
         blankPos = boardAfter.indexOf('#');
-        switch((currentMove = randomX.nextInt(4)){
-
-          case 0:
-            if(lastMove != 1){
-              auxBoard = upSwap(boardAfter, blankPos);
-            }
-            break;
-
-          case 1:
-            if(lastMove != 0){
-              auxBoard = downSwap(boardAfter, blankPos);
-            }
-            break;
-
-          case 2:
-            if(lastMove != 3){
-              auxBoard = leftSwap(boardAfter, blankPos);
-            }
-            break;
-
-          case 3:
-            if(lastMove != 2){
-              auxBoard = rightSwap(boardAfter, blankPos);
-            }
-            break;
-        }
-        if(auxBoard != boardAfter && auxBoard != null){
-          boardAfter = auxBoard;
-          leftMoves--;
-          lastMove = currentMove;
-        }
       }
     }
     return boardAfter;

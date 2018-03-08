@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class IDFS {
   public final int INITIAL_DEPTH = 2;
   protected Graph graph;
@@ -36,27 +34,16 @@ public class IDFS {
         }
       }
 
-
-      // aux = dfsRecursive(initialNode, dest, 0, i);
       if(aux != null && aux.state.equalsIgnoreCase(dest)){
         graph.getPath(aux);
-        // System.out.println("Moves with IDFS: " + graph.depth);
         return graph.depth;
       }
     }
   }
-  //
-  // protected GraphNode dfsRecursive(GraphNode node, String dest, int depth, int max_depth){
-  //   this.maxSize += depth > this.maxSize? 1: 0;
-  //   GraphNode aux = null;
-  //   if(node.state.equalsIgnoreCase(dest)){ return node; }
-  //   if(depth > max_depth){ return null; }
-  //   for (int i = 0; i < 4 ; i++) {
-  //     if(aux == null && node.childs[i] != null && !this.graph.wasCreated(node.childs[i], node.state, null)){
-  //       aux = dfsRecursive(graph.nodes.get(node.childs[i]), dest, depth + 1, max_depth);
-  //       this.expanddedNodes++;
-  //     }
-  //   }
-  //   return aux;
-  // }
+
+  public int[] lastStatistics(){
+    System.out.println("Numero de nodos expandidos: " + this.graph.nodes.size());
+    System.out.println("Numero maximo de nodos en memoria: " + this.stack.maxSize + "\n");
+    return new int[]{this.graph.nodes.size(), this.stack.maxSize};
+  }
 }

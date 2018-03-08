@@ -11,6 +11,8 @@ public class MyStack<T> extends SearchList<T> {
         this.head.next = aux;
         this.expanddedNodes++;
         this.size++;
-        this.maxSize += this.size > this.maxSize? 1 : 0;
+        if(this.size > this.maxSize){
+          this.maxSize++;
+        }
     }
 }

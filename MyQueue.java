@@ -12,6 +12,8 @@ public class MyQueue<T> extends SearchList<T> {
         this.tail = aux;
         this.expanddedNodes++;
         this.size++;
-        this.maxSize += this.size > this.maxSize? 1 : 0;
+        if(this.size > this.maxSize){
+          this.maxSize++;
+        }
     }
 }

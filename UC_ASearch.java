@@ -1,18 +1,16 @@
-import java.util.*;
+import java.util.PriorityQueue;
 
 public class UC_ASearch {
 
   protected PriorityQueue<GraphNode> heap;
   protected Heuristic function;
   protected Graph graph;
-  public int expanddedNodes;
   public int maxSize;
 
   public UC_ASearch(Heuristic function){
     this.heap = new PriorityQueue();
     this.function = function;
     this.graph = new Graph();
-    this.expanddedNodes = 1;
     this.maxSize = 1;
   }
 
@@ -20,7 +18,6 @@ public class UC_ASearch {
     this.heap = new PriorityQueue();
     this.function = null;
     this.graph = new Graph();
-    this.expanddedNodes = 1;
     this.maxSize = 1;
   }
 
@@ -40,7 +37,6 @@ public class UC_ASearch {
         aux.wasVisited = true;
         if(aux.state.equalsIgnoreCase(dest)){
           this.graph.getPath(aux);
-          // System.out.println("Moves: " + this.graph.depth);
           return this.graph.depth;
         }
 
@@ -51,13 +47,20 @@ public class UC_ASearch {
             this.graph.wasCreated(aux.childs[i], aux.state, args);
             if(!this.graph.nodes.get(aux.childs[i]).wasVisited){
               this.heap.offer(this.graph.nodes.get(aux.childs[i]));
-              this.expanddedNodes++;
-              this.maxSize += this.heap.size() > this.maxSize? 1: 0;
+              if(this.heap.size() > this.maxSize){
+                this.maxSize ++;
+              }
             }
           }
         }
       }
     }
     return -1;
+  }
+
+  public int[] lastStatistics(){
+    System.out.println("Numero de nodos expandidos: " + this.graph.nodes.size());
+    System.out.println("Numero maximo de nodos en memoria: " + this.maxSize + "\n");
+    return new int[]{this.graph.nodes.size(), this.maxSize};
   }
 }
