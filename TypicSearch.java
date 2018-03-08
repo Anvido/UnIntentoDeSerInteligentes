@@ -11,7 +11,7 @@ public class TypicSearch {
   public int search(String init, String dest){
     GraphNode aux = new GraphNode(init, null);
     this.list.clear();
-    this.graph.nodes.clear();
+    this.graph.clear();
     this.list.add(aux);
     this.graph.nodes.put(init, aux);
     aux = null;
@@ -24,8 +24,8 @@ public class TypicSearch {
         }
       }
     }
-    graph.getPath(aux);
-    return graph.depth;
+    this.graph.getPath(aux);
+    return this.graph.depth;
   }
 
   public int[] lastStatistics(){

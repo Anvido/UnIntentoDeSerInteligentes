@@ -10,6 +10,11 @@ public class Graph {
     this.depth = 0;
   }
 
+  public void clear(){
+    this.nodes.clear();
+    this.depth = 0;
+  }
+
   public boolean wasCreated(String state, String parent, int[] args){
     if(!this.nodes.containsKey(state)){
       this.nodes.put(state,

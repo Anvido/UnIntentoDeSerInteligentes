@@ -1,13 +1,13 @@
 public class IDFS {
-  public final int INITIAL_DEPTH = 2;
+
   protected Graph graph;
-  public int expanddedNodes;
+  protected MyStack<GraphNode> stack;
   public int maxSize;
-  MyStack<GraphNode> stack;
+  public final int INITIAL_DEPTH = 2;
+
 
   public IDFS(){
     this.graph = new Graph();
-    this.expanddedNodes = 0;
     this.maxSize = 0;
     this.stack = new MyStack();
   }
@@ -18,7 +18,7 @@ public class IDFS {
     int[] args = new int[2];
     args[1] = 0;
     for (int i = this.INITIAL_DEPTH; true ; i += 2) {
-      this.graph.nodes.clear();
+      this.graph.clear();
       this.graph.nodes.put(init, initialNode);
       this.stack.clear();
       this.stack.add(initialNode);
