@@ -45,18 +45,19 @@ public class Main {
     UC_ASearch AK = new UC_ASearch(AKH);
     UC_ASearch M = new UC_ASearch(MH);
 
-    int[][] totalNodes = new int[5][30], maxNodes = new int[5][30];
-    int[] stats;
-    for(int i = 0; i < 30; i++){
-      System.out.println("\nPrueba #"+(i+1)+":");
-      board = BoardHandler.shuffle(dest, 13);
+    // int[][] totalNodes = new int[5][30], maxNodes = new int[5][30];
+    // int[] stats;
+    // for(int i = 0; i < 30; i++){
+      // System.out.println("\nPrueba #"+(i+1)+":");
+      board = BoardHandler.shuffle(dest, 15);
 
       System.gc();
       System.out.println(names.get(0));
       System.out.println("Movimientos:\t" + BFS.search(board, dest));
-      stats = BFS.lastStatistics();
-      totalNodes[0][i] = stats[0];
-      maxNodes[0][i] = stats[1];
+      BFS.lastStatistics();
+      // stats = BFS.lastStatistics();
+      // totalNodes[0][i] = stats[0];
+      // maxNodes[0][i] = stats[1];
 
       // DFS = new TypicSearch(new MyStack());
       // System.out.println("Movimientos DFS:\t"+DFS.search(board, dest));
@@ -64,60 +65,64 @@ public class Main {
       System.gc();
       System.out.println(names.get(1));
       System.out.println("Movimientos:\t" + IDFS.search(board, dest));
-      stats = IDFS.lastStatistics();
-      totalNodes[1][i] = stats[0];
-      maxNodes[1][i] = stats[1];
+      IDFS.lastStatistics();
+      // stats = IDFS.lastStatistics();
+      // totalNodes[1][i] = stats[0];
+      // maxNodes[1][i] = stats[1];
 
       System.gc();
       System.out.println(names.get(2));
       System.out.println("Movimientos:\t" + UC.search(board, dest));
-      stats = UC.lastStatistics();
-      totalNodes[2][i] = stats[0];
-      maxNodes[2][i] = stats[1];
+      UC.lastStatistics();
+      // stats = UC.lastStatistics();
+      // totalNodes[2][i] = stats[0];
+      // maxNodes[2][i] = stats[1];
 
       System.gc();
       System.out.println(names.get(3));
       System.out.println("Movimientos:\t" + AK.search(board, dest));
-      stats = AK.lastStatistics();
-      totalNodes[3][i] = stats[0];
-      maxNodes[3][i] = stats[1];
+      AK.lastStatistics();
+      // stats = AK.lastStatistics();
+      // totalNodes[3][i] = stats[0];
+      // maxNodes[3][i] = stats[1];
 
       System.gc();
       System.out.println(names.get(4));
       System.out.println("Movimientos:\t" + M.search(board, dest));
-      stats = M.lastStatistics();
-      totalNodes[4][i] = stats[0];
-      maxNodes[4][i] = stats[1];
-    }
+      M.lastStatistics();
+      // stats = M.lastStatistics();
+    //   totalNodes[4][i] = stats[0];
+    //   maxNodes[4][i] = stats[1];
+    // }
 
     System.out.println();
 
-    double[] avgTotalNodes = new double[5], avgMaxNodes = new double[5];
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 30; j++) {
-        avgTotalNodes[i] += totalNodes[i][j];
-        avgMaxNodes[i] += maxNodes[i][j];
-      }
-      System.out.println(names.get(i));
-      avgTotalNodes[i] /= 30;
-      avgMaxNodes[i] /= 30;
-      System.out.println("Promedio nodos expandidos: " + avgTotalNodes[i]);
-      System.out.println("Promedio maximo numero de nodos en memoria: " + avgMaxNodes[i] + "\n");
-    }
-
-    System.out.println();
-
-    double[] sdTotalNodes = new double[5], sdMaxNodes = new double[5];
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 30; j++) {
-          sdTotalNodes[i] += Math.pow(totalNodes[i][j] - avgTotalNodes[i], 2);
-          sdMaxNodes[i] += Math.pow(maxNodes[i][j] - avgMaxNodes[i], 2);
-      }
-      System.out.println(names.get(i));
-      sdTotalNodes[i] = Math.sqrt(sdTotalNodes[i]/30);
-      sdMaxNodes[i] = Math.sqrt(sdMaxNodes[i]/30);
-      System.out.println("Desviacion estandar nodos expandidos: " + sdTotalNodes[i]);
-      System.out.println("Desviacion estandar maximo numero de nodos en memoria: " + sdMaxNodes[i] + "\n");
-    }
+    // double[] avgTotalNodes = new double[5], avgMaxNodes = new double[5];
+    // for (int i = 0; i < 5; i++) {
+    //   for (int j = 0; j < 30; j++) {
+    //     avgTotalNodes[i] += totalNodes[i][j];
+    //     avgMaxNodes[i] += maxNodes[i][j];
+    //   }
+    //   System.out.println(names.get(i));
+    //   avgTotalNodes[i] /= 30;
+    //   avgMaxNodes[i] /= 30;
+    //   System.out.println("Promedio nodos expandidos: " + avgTotalNodes[i]);
+    //   System.out.println("Promedio maximo numero de nodos en memoria: " + avgMaxNodes[i] + "\n");
+    // }
+    //
+    // System.out.println();
+    //
+    // double[] sdTotalNodes = new double[5], sdMaxNodes = new double[5];
+    // for (int i = 0; i < 5; i++) {
+    //   for (int j = 0; j < 30; j++) {
+    //       sdTotalNodes[i] += Math.pow(totalNodes[i][j] - avgTotalNodes[i], 2);
+    //       sdMaxNodes[i] += Math.pow(maxNodes[i][j] - avgMaxNodes[i], 2);
+    //   }
+    //   System.out.println(names.get(i));
+    //   sdTotalNodes[i] = Math.sqrt(sdTotalNodes[i]/30);
+    //   sdMaxNodes[i] = Math.sqrt(sdMaxNodes[i]/30);
+    //   System.out.println("Desviacion estandar nodos expandidos: " + sdTotalNodes[i]);
+    //   System.out.println("Desviacion estandar maximo numero de nodos en memoria: " + sdMaxNodes[i] + "\n");
+    // }
   }
 }
