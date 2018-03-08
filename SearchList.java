@@ -1,5 +1,4 @@
 public abstract class SearchList<T> {
-    public int expanddedNodes;
     public int size;
     public int maxSize;
 
@@ -16,13 +15,7 @@ public abstract class SearchList<T> {
 
     protected Node<T> head = null, tail = null;
 
-    public SearchList(){
-        this.head = new Node(null, null);
-        this.expanddedNodes = 0;
-        this.size = 0;
-        this.maxSize = 0;
-    }
-
+    public abstract void clear();
     public abstract void add(T x);
 
     public T remove(){

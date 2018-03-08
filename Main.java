@@ -38,12 +38,12 @@ public class Main {
     names.put(3, "A* with AngryKidHeuristic:");
     names.put(4, "A* with ManhattanHeuristic:");
 
-    TypicSearch BFS;
+    TypicSearch BFS = new TypicSearch(new MyQueue());
     // TypicSearch DFS;
-    IDFS IDFS;
-    UC_ASearch UC;
-    UC_ASearch AK;
-    UC_ASearch M;
+    IDFS IDFS = new IDFS();
+    UC_ASearch UC = new UC_ASearch();
+    UC_ASearch AK = new UC_ASearch(AKH);
+    UC_ASearch M = new UC_ASearch(MH);
 
     int[][] totalNodes = new int[5][30], maxNodes = new int[5][30];
     int[] stats;
@@ -51,7 +51,7 @@ public class Main {
       System.out.println("\nPrueba #"+(i+1)+":");
       board = BoardHandler.shuffle(dest, 15);
 
-      BFS = new TypicSearch(new MyQueue());
+
       System.out.println(names.get(0));
       System.out.println("Moves:\t" + BFS.search(board, dest));
       stats = BFS.lastStatistics();
@@ -61,28 +61,27 @@ public class Main {
       // DFS = new TypicSearch(new MyStack());
       // System.out.println("Moves DFS:\t"+DFS.search(board, dest));
 
-      IDFS = new IDFS();
       System.out.println(names.get(1));
       System.out.println("Moves:\t" + IDFS.search(board, dest));
       stats = IDFS.lastStatistics();
       totalNodes[1][i] = stats[0];
       maxNodes[1][i] = stats[1];
 
-      UC = new UC_ASearch();
+
       System.out.println(names.get(2));
       System.out.println("Moves:\t" + UC.search(board, dest));
       stats = UC.lastStatistics();
       totalNodes[2][i] = stats[0];
       maxNodes[2][i] = stats[1];
 
-      AK = new UC_ASearch(AKH);
+
       System.out.println(names.get(3));
       System.out.println("Moves:\t" + AK.search(board, dest));
       stats = AK.lastStatistics();
       totalNodes[3][i] = stats[0];
       maxNodes[3][i] = stats[1];
 
-      M = new UC_ASearch(MH);
+
       System.out.println(names.get(4));
       System.out.println("Moves:\t" + M.search(board, dest));
       stats = M.lastStatistics();
@@ -106,7 +105,7 @@ public class Main {
     }
 
     System.out.println();
-    
+
     double[] sdTotalNodes = new double[5], sdMaxNodes = new double[5];
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 30; j++) {

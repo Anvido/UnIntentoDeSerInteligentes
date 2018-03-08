@@ -26,7 +26,9 @@ public class UC_ASearch {
     args[0] = 0;
     args[1] = (this.function == null) ? 0 : this.function.calculate(init);
     GraphNode aux = new GraphNode(init, null, args[0], args[1]);
+    this.graph.nodes.clear();
     this.graph.nodes.put(init, aux);
+    this.heap.clear();
     this.heap.offer(aux);
 
     while(!this.heap.isEmpty()){
